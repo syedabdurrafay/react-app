@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - main  # Trigger on push to the main branch
 
 jobs:
   deploy:
@@ -27,6 +27,6 @@ jobs:
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GH_TOKEN }}
-          publish_dir: ./build
-          publish_branch: gh
+          github_token: ${{ secrets.GITHUB_TOKEN }}  # No need to create GH_TOKEN manually
+          publish_dir: ./build                        # for CRA; use ./dist for Vite
+          publish_branch: gh-pages                    # this is the branch where site will be hosted
